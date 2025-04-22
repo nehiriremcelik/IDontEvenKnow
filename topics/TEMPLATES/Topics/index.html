@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discussion Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .question-list, .form-container {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .question {
+            margin: 10px 0;
+        }
+        .question a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .question a:hover {
+            text-decoration: underline;
+        }
+        button {
+            padding: 6px 12px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Open Discussions</h1>
+
+    <div class="question-list">
+        {% if question_list %}
+            {% for question in question_list %}
+                <div class="question">
+                    <a href="{% url 'topics:detail' question.id %}">
+                        {{ question.question_text }}
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No questions have been posted yet.</p>
+        {% endif %}
+    </div>
+
+    <div class="form-container">
+        <h2>Start a New Discussion</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Question</button>
+        </form>
+    </div>
+</body>
+</html>
