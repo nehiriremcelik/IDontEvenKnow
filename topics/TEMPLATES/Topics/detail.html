@@ -64,8 +64,9 @@
         {% endif %}
 
         <hr>
+
         <h3>Submit Your Answer:</h3>
-        <form method="post">
+        <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit Answer</button>
@@ -73,4 +74,3 @@
     </div>
 </body>
 </html>
-

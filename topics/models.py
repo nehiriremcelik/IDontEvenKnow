@@ -1,6 +1,7 @@
 from django.db import models
-import datetime
+from django.contrib.auth.models import User
 from django.utils import timezone
+import datetime
 
 class Question(models.Model):
     question_text = models.TextField()
@@ -15,9 +16,9 @@ class Question(models.Model):
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     answer_text = models.TextField()
-    votes = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.answer_text[:50]
+
 

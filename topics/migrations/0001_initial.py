@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('answer_text', models.TextField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('votes', models.IntegerField(default=0)),
+                ('likes', models.IntegerField(default=0)),
                 ('question', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='topics.question')),
             ],
         ),
