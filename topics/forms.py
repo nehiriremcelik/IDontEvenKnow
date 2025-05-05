@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['question_text']
+        fields = ['question_text', 'tag']
+
 
 class AnswerForm(forms.ModelForm):
     class Meta:
